@@ -107,45 +107,62 @@ document.getElementById('btnForEach').addEventListener('click', forEachFoods)
 
 //  ---------------STUDENT WORK SECTION--------------
 
-/* 
-  Task 1 — Uppercase List
-  -----------------------
-  - Use .map() to create a new array with all foods in uppercase
-  - Display the results as an unordered list (<ul>)
-*/
+// Task 1 — Uppercase List
 function uppercaseList () {
-  // TODO: Write your code here
+  const upperFoods = foods.map(food => food.toUpperCase());
+
+  let output = '<ul class="list-group">';
+
+  for (const food of upperFoods) {
+    output += `<li class="list-group-item">${food}</li>`;
+  }
+
+  output += '</ul>';
+  render(output);
 }
 
-/* 
-  Task 2 — Reverse List
-  ---------------------
-  - Show the foods array in reverse order
-  - You may use a backwards loop OR the built-in .reverse()
-*/
+
+// Task 2 — Reverse List
 function reverseList () {
-  // TODO: Write your code here
+  let output = '<ul class="list-group">';
+
+  for (let i = foods.length - 1; i >= 0; i--) {
+    output += `<li class="list-group-item">${foods[i]}</li>`;
+  }
+
+  output += '</ul>';
+  render(output);
 }
 
-/* 
-  Task 3 — Random Food Picker
-  ---------------------------
-  - Use Math.random to pick a random food from the array
-  - Display it in a Bootstrap card with a heading like "Today's Pick"
-*/
+
+// Task 3 — Random Food Picker
 function randomFoodPicker () {
-  // TODO: Write your code here
+  const randomIndex = Math.floor(Math.random() * foods.length);
+  const food = foods[randomIndex];
+
+  let output = `
+    <div class="card shadow-sm text-center">
+      <div class="card-body">
+        <h5 class="card-title">Today's Pick</h5>
+        <p class="card-text">${food}</p>
+      </div>
+    </div>
+  `;
+
+  render(output);
 }
 
-/* 
-  Task 4 — Word Lengths
-  ---------------------
-  - Loop through each food in the array
-  - Count the number of characters in each one
-  - Display results in the format: Food — X letters
-*/
+
+// Task 4 — Word Lengths
 function wordLengths () {
-  // TODO: Write your code here
+  let output = '<ul class="list-group">';
+
+  for (const food of foods) {
+    output += `<li class="list-group-item">${food} — ${food.length} letters</li>`;
+  }
+
+  output += '</ul>';
+  render(output);
 }
 
 // ---- Event listeners for the new buttons ----
